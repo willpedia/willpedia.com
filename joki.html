@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WILLPEDIA</title>
+
+  <link rel="icon" type="image/png" href="assets/logo-willpedia.png">
+<link rel="stylesheet" href="css/joki.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/shared.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo-willpedia.png" alt="WILLPEDIA">
+    <span>WILLPEDIA</span>
+  </a>
+
+<div class="nav-right">
+    <div class="nav-search">
+      <input type="text" id="jokiSearch" placeholder="Cari joki...">
+      <span class="search-icon"></span>
+    </div>
+
+    <button id="menuBtn" class="menu-btn" aria-label="Menu" type="button">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- SEARCH OVERLAY -->
+<div id="jokiSearchOverlay" class="search-results-overlay">
+  <div id="jokiSearchResults" class="search-results-list"></div>
+</div>
+
+<!-- OVERLAY -->
+<div id="overlay" class="overlay"></div>
+
+<!-- DRAWER -->
+<aside id="drawer" class="drawer">
+  <div class="drawer-header">
+    <span class="drawer-title">MENU</span>
+    <button id="closeDrawer" class="close-btn">&times;</button>
+  </div>
+  <nav class="drawer-menu">
+    <a href="index.html">Top Up</a>
+    <a href="joki.html" aria-current="page">Joki</a>
+    <a href="https://wa.me/6281357706121" target="_blank">Hubungi CS</a>
+  </nav>
+</aside>
+
+<main class="container">
+
+  <!-- SLIDER -->
+  <div class="slider">
+    <div class="slides-track">
+      <div class="slide"><img src="assets/columbina.png"></div>
+      <div class="slide"><img src="assets/inefa.png"></div>
+      <div class="slide"><img src="assets/hsr1.png"></div>
+      <div class="slide"><img src="assets/gi1.png"></div>
+      <div class="slide"><img src="assets/denis.jpeg"></div>
+    </div>
+
+    <button class="prev-btn" id="prevBtn">&#10094;</button>
+    <button class="next-btn" id="nextBtn">&#10095;</button>
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+  
+  <!-- MENU UTAMA -->
+    <div class="main-menu">
+    <a href="index.html" class="main-card">
+        <span class="menu-icon">💎</span>
+        <div class="menu-text">
+        <strong>Top Up</strong>
+        </div>
+    </a>
+
+    <a href="joki.html" class="main-card active">
+        <span class="menu-icon">🎮</span>
+        <div class="menu-text">
+        <strong>Joki</strong>
+        </div>
+    </a>
+    </div>
+
+   <!-- PILIH GAME JOKI -->
+    <section class="section">
+    <div class="section-head">
+        <h2>Pilih Game Joki</h2>
+        <span class="hint">Pilih dulu gamenya</span>
+    </div>
+
+    <div class="joki-grid" id="jokiGameGrid">
+        <button class="joki-card active" type="button" data-game="genshin_impact_joki">
+        <img src="assets/Genshin_Impact.png" alt="Genshin Impact">
+        <div class="joki-meta">
+            <span class="joki-title">Genshin Impact</span>
+            <span class="joki-sub">Quest • Daily • Explore</span>
+        </div>
+        </button>
+
+        <button class="joki-card" type="button" data-game="wuthering_waves_joki">
+        <img src="assets/Wuthering_Waves.png" alt="Wuthering Waves">
+        <div class="joki-meta">
+            <span class="joki-title">Wuthering Waves</span>
+            <span class="joki-sub">Explore • Event • Quest</span>
+        </div>
+        </button>
+
+        <button class="joki-card" type="button" data-game="honkai_star_rail_joki">
+        <img src="assets/Honkai_Star_Rail.png" alt="Honkai Star Rail">
+        <div class="joki-meta">
+            <span class="joki-title">Honkai Star Rail</span>
+            <span class="joki-sub">Quest • Explore • Event</span>
+        </div>
+        </button>
+
+        <button class="joki-card" type="button" data-game="zenless_zone_zero_joki">
+        <img src="assets/Zenless_Zone_Zero.png" alt="Zenless Zone Zero">
+        <div class="joki-meta">
+            <span class="joki-title">Zenless Zone Zero</span>
+            <span class="joki-sub">Event • Quest • Daily</span>
+        </div>
+        </button>
+    </div>
+    </section>
+ 
+
+  <!-- PILIH PAKET (placeholder, nanti diisi dari JSON) -->
+  <section class="section">
+    <div class="section-head">
+      <h2>Pilih Paket</h2>
+      <span class="hint">Filter berdasarkan kategori</span>
+    </div>
+
+    <div class="chip-row" id="jokiCategory">
+      <button class="chip active" type="button">Semua</button>
+      <button class="chip" type="button">Daily</button>
+      <button class="chip" type="button">Quest</button>
+      <button class="chip" type="button">Explore</button>
+      <button class="chip" type="button">Material</button>
+      <button class="chip" type="button">Endgame</button>
+      <button class="chip" type="button">Character</button>
+      <button class="chip" type="button">Mancing</button>
+    </div>
+
+    <div class="item-list" id="itemList">
+  </section>
+
+  <section class="note">
+    <div class="note-card">
+      <h4>Catatan</h4>
+      <ul>
+        <li>Estimasi Waktu Joki Tergantung Antrian</li>
+        <li>Joki WAJIB Login Akun Hoyoverse</li>
+        <li>Semua Proses Dilakukan Manual Tanpa Cheat</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>© WILLPEDIA 2026</footer>
+
+<!-- JS TERPISAH -->
+<script src="js/joki.js"></script>
+</body>
+</html>
