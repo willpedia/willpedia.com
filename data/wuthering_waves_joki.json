@@ -1,0 +1,12 @@
+{
+  "game": "Wuthering Waves",
+  "items": [
+    {"name": "Joki Daily & Synthesis", "category": "daily", "price": 45000, "desc": "Daily quest & exp farm"},
+    {"name": "Joki Main Quest", "category": "quest", "price": 140000, "desc": "Story progress aman"},
+    {"name": "Joki Tower of Awakening", "category": "endgame", "price": 190000, "desc": "High tower clear"},
+    {"name": "Joki Echo Farming", "category": "farm", "price": 95000, "desc": "Target echo set & cost"},
+    {"name": "Joki Boss Weekly", "category": "boss", "price": 80000, "desc": "Semua weekly challenge"},
+    {"name": "Joki Depths of Illusive Realm", "category": "endgame", "price": 210000, "desc": "Endgame mode high score"},
+    {"name": "Joki Exploration 100%", "category": "explore", "price": 180000, "desc": "Full map & puzzle"}
+  ]
+}
