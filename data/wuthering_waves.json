@@ -1,0 +1,10 @@
+{
+  "game": "Wuthering Waves",
+  "items": [
+    {"name": "60 Astrite", "category": "basic", "price": 12000},
+    {"name": "300 + 30 Astrite", "category": "basic", "price": 55000},
+    {"name": "980 Astrite", "category": "premium", "price": 170000},
+    {"name": "1980 Astrite", "category": "premium", "price": 340000},
+    {"name": "6480 Astrite", "category": "whale", "price": 1100000}
+  ]
+}

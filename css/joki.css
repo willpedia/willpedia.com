@@ -1,0 +1,284 @@
+/* ======================
+   JOKI CSS - MOBILE OPTIMIZED LIKE style.css
+====================== */
+
+/* BASE - MATCHING style.css */
+:root {
+  --font-small: clamp(11px, 2.5vw, 13px);
+  --font-base: clamp(13px, 3vw, 15px);
+  --font-h2: clamp(16px, 4vw, 20px);
+  --padding-card: clamp(12px, 4vw, 16px);
+  --touch-target: 44px;
+  --padding-sm: clamp(8px, 2vw, 12px);
+  --radius-lg: 18px;
+  --radius-md: 14px;
+}
+
+.section {
+  margin-top: clamp(16px, 6vw, 28px);
+  padding: 0 clamp(10px, 4vw, 16px);
+}
+
+/* HEADER */
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(6px, 2vw, 8px);
+  margin-bottom: 12px;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: var(--font-h2);
+}
+
+.hint {
+  font-size: var(--font-small);
+  color: rgba(255,233,238,.75);
+}
+
+/* JOKI GRID - EXACT LIKE game-grid */
+/* JOKI GRID - VERSI PERBAIKAN */
+.joki-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 12px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+/* Khusus layar handphone standar hingga kecil */
+@media (max-width: 480px) {
+  .joki-grid {
+    /* Paksa menjadi 2 kolom */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+  }
+}
+
+/* Khusus layar handphone yang sangat sempit */
+@media (max-width: 320px) {
+  .joki-grid {
+    /* Menjadi 1 kolom agar tidak terlalu sesak */
+    grid-template-columns: 1fr; 
+  }
+}
+
+.joki-card {
+  background: linear-gradient(145deg, rgba(59,130,246,0.08), rgba(0,0,0,0.35)), var(--card);
+  border-radius: 16px;
+  padding: 12px 10px;
+  text-align: center;
+  border: 1px solid rgba(59,130,246,0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.joki-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.joki-card img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin-bottom: 2px;
+}
+
+.joki-title {
+  font-size: 11px;
+  color: var(--sakura2);
+  line-height: 1.25;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.joki-sub {
+  font-size: 10px;
+  color: rgba(255,233,238,.72);
+  line-height: 1.2;
+}
+
+/* TAMBAHAN OPTIMASI MOBILE */
+/* Pastikan semua elemen interaktif memiliki touch target yang cukup */
+.joki-card,
+.chip,
+.main-card {
+  min-height: var(--touch-target);
+  min-width: var(--touch-target);
+}
+
+
+
+/* Optimasi untuk layar sangat kecil */
+@media (max-width: 320px) {
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .hint {
+    font-size: 10px;
+  }
+  
+  .joki-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.joki-card.active {
+  border-color: var(--torii);
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.25), 0 12px 24px rgba(0,0,0,0.6);
+  transform: scale(1.06);
+}
+
+.joki-card:active { 
+  transform: scale(.95); 
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .joki-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-2);
+    border-color: rgba(59,130,246,.35);
+  }
+}
+
+/* CHIP ROW */
+.chip-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Supaya scroll lancar di iPhone */
+  padding: 10px 5px;
+  scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
+}
+
+.chip {
+  flex: 0 0 auto;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(59,130,246,0.18);
+  border-radius: 999px;
+  color: #fff;
+  padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 14px);
+  font-weight: 700;
+  font-size: var(--font-small);
+  min-height: var(--touch-target);
+  scroll-snap-align: start;
+  white-space: nowrap;
+}
+
+.chip.active {
+  border-color: rgba(59,130,246,.45);
+}
+
+/* ITEM LIST - LIKE item-list */
+.item-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 2vw, 10px);
+  margin: 14px 0 20px;
+}
+
+.item-card {
+  background: linear-gradient(145deg, rgba(59,130,246,0.08), rgba(0,0,0,0.35)), var(--card);
+  padding: var(--padding-card);
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(59,130,246,0.2);
+  animation: fadeUp .3s ease both;
+  min-height: var(--touch-target);
+}
+
+.item-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-name {
+  font-size: var(--font-base);
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-desc {
+  font-size: var(--font-small);
+  color: rgba(255,255,255,0.75);
+}
+
+.item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: clamp(4px, 1vw, 6px);
+}
+
+.item-price {
+  font-weight: 700;
+  font-size: var(--font-base);
+  color: var(--sakura);
+}
+
+.badge {
+  font-size: clamp(9px, 2vw, 11px);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--sakura);
+}
+
+.note, .note-card {
+  padding: var(--padding-sm);
+  background: rgba(59,130,246,0.1);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(59,130,246,0.2);
+  margin: clamp(16px, 5vw, 24px) 0;
+}
+
+.note h4 {
+  margin: 0 0 12px 0;
+  color: var(--sakura2);
+}
+
+.note ul {
+  margin: 0;
+  padding-left: clamp(20px, 5vw, 24px);
+  font-size: var(--font-small);
+  line-height: 1.4;
+  color: rgba(255,255,255,0.85);
+}
+
+.note li {
+  margin-bottom: clamp(4px, 1vw, 8px);
+}
+
+/* TOUCH POLISH */
+button, .joki-card, .chip {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}

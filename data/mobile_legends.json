@@ -1,0 +1,12 @@
+{
+  "game": "Mobile Legends",
+  "items": [
+    {"name": "28 Diamonds (25 + 3 Bonus)", "category": "basic", "price": 9000, "desc": "Paket hemat untuk weekly pass"},
+    {"name": "59 Diamonds (53 + 6 Bonus)", "category": "basic", "price": 17000, "desc": "Diamond standar"},
+    {"name": "Weekly Diamond Pass", "category": "pass", "price": 29000, "desc": "Pass mingguan 90diamonds"},
+    {"name": "170 Diamonds (154 + 16 Bonus)", "category": "premium", "price": 45000, "desc": "Paket besar event"},
+    {"name": "Twilight Pass", "category": "pass", "price": 150000, "desc": "Full pass bulan skin+bp"},
+    {"name": "875 Diamonds", "category": "premium", "price": 224000, "desc": "Top up besar hemat"},
+    {"name": "2010 Diamonds", "category": "whale", "price": 486000, "desc": "Untuk whale player"}
+  ]
+}

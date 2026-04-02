@@ -1,0 +1,137 @@
+/* TOPUP SPECIFIC - css/style.css - RESPONSIVE MOBILE FIRST */
+
+/* Import responsive vars from joki.css pattern */
+:root {
+  --font-small: clamp(11px, 2.5vw, 13px);
+  --font-base: clamp(13px, 3vw, 15px);
+  --padding-card: clamp(12px, 4vw, 16px);
+  --touch-target: 44px;
+  --padding-sm: clamp(8px, 2vw, 12px);
+}
+
+/* ======================
+   GRID GAME + CARD
+====================== */
+/* TOPUP-SPECIFIC STYLES */
+.game-grid{
+  contain: layout paint;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 360px) {
+  .game-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(8px, 3vw, 12px);
+  }
+}
+
+
+.game-card{
+  background:
+    linear-gradient(145deg, rgba(59,130,246,0.08), rgba(0,0,0,0.35)),
+    var(--card);
+  border-radius: 16px;
+  padding: 12px 10px;
+  text-align:center;
+  cursor:pointer;
+  border: 1px solid rgba(59,130,246,0.25);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, filter .2s ease;
+  animation: fadeUp .35s ease both;
+  will-change: transform;
+  min-height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.game-card img{
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display:block;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 3px 8px rgba(59,130,246,.3));
+}
+
+
+.game-card span{
+  font-size: 11px;
+  color: var(--sakura2);
+  line-height: 1.25;
+  font-weight: 600;
+  text-align: center;
+}
+
+
+.game-card.active{
+  border-color: var(--torii);
+  box-shadow:
+    0 0 0 2px rgba(59,130,246,0.25),
+    0 12px 24px rgba(0,0,0,0.6);
+  transform: scale(1.06);
+}
+
+.game-card:active{ transform: scale(.95); }
+
+@media (hover:hover) and (pointer:fine){
+  .game-card:hover{
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-2);
+    border-color: rgba(59,130,246,.35);
+  }
+}
+
+.item-list{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+  margin: 14px 0 20px;
+}
+
+.item-card{
+  background:
+    linear-gradient(145deg, rgba(59,130,246,0.08), rgba(0,0,0,0.35)),
+    var(--card);
+  padding: var(--padding-card);
+  border-radius: var(--radius-md);
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  border: 1px solid rgba(59,130,246,0.2);
+  animation: fadeUp .3s ease both;
+  min-height: var(--touch-target);
+}
+
+
+.item-name{ font-size: var(--font-base); color:#fff; }
+
+.item-price{ font-weight: 700; font-size: var(--font-base); color: var(--sakura); }
+
+.item-desc {
+  font-size: var(--font-small);
+  color: rgba(255,255,255,0.75);
+  margin-top: 2px;
+  display: block;
+}
+
+
+.price{ text-align:center; font-size: 22px; font-weight: 800; margin: 18px 0; color: var(--torii); }
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .game-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+}
+
+
+
