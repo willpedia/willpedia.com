@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5, user-scalable=yes, viewport-fit=cover">
+  <title>WILLPEDIA - Testimoni</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/testimoni.css"> 
+  <link rel="icon" type="image/png" href="assets/logo-willpedia.png">
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div id="searchOverlay" class="search-results-overlay">
+    <div class="search-container">
+      <input type="text" id="topupSearch" placeholder="Cari nama game atau produk...">
+      <div id="searchResults" class="search-results-list"></div>
+      <button type="button" class="close-search-btn" onclick="closeSearchOverlay()">Tutup</button>
+    </div>
+  </div>
+
+  <div id="overlay" class="overlay"></div>
+
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/logo-willpedia.png" alt="WILLPEDIA">
+      <span class="brand-text"></span>
+    </a>
+
+    <div class="nav-right">
+      <button class="nav-icon-btn" id="searchBtn" aria-label="Search">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+
+      <div class="region-selector">
+        <img src="https://flagcdn.com/id.svg" alt="ID Flag" class="flag-icon">
+        <span>ID / IDR</span>
+      </div>
+
+      <button id="menuBtn" class="menu-btn-modern" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <aside id="drawer" class="drawer">
+    <div class="drawer-header">
+      <img src="assets/logo-willpedia.png" alt="WILLPEDIA" class="drawer-logo">
+      <button class="close-btn" id="closeDrawer" aria-label="Close Menu">&times;</button>
+    </div>
+    
+    <nav class="drawer-menu">
+      <a href="index.html">
+        <span>Top Up Games</span>
+      </a>
+      <a href="joki.html">
+        <span>Joki Games</span>
+      </a>
+      <a href="testimoni.html" class="active">
+        <span>Testimoni</span>
+      </a>
+      <a href="https://wa.me/6281357706121" target="_blank">
+        <span>Hubungi CS</span>
+      </a>
+      <div class="drawer-divider"></div>
+    </nav>
+  </aside>
+
+  <div class="container">
+    <section class="section">
+      <div class="section-head">
+        <h2>Testimoni Pelanggan</h2>
+        <span class="hint">Bukti transaksi dan kepuasan pelanggan WILLPEDIA</span>
+      </div>
+
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi1.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Rawat Akun</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi2.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Culus</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi3.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Explore</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi4.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Event</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi5.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Event</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi6.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Endgame</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi7.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Material</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi8.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Topup Welkin</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi9.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Quest</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi10.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Quest</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi11.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Quest</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi12.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Event</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi13.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Quest</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi14.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Event</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-image">
+            <img src="assets/testi13.png" alt="Bukti Testimoni">
+          </div>
+          <div class="testi-body">
+            <p>Joki Quest</p>
+            <span class="testi-user"></span>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+  </div>
+
+  <footer>© WILLPEDIA 2026</footer>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="js/particles-config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

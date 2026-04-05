@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5, user-scalable=yes, viewport-fit=cover">
+  <title>WILLPEDIA - Joki Games</title>
+  <link rel="stylesheet" href="css/joki.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/logo-willpedia.png">
+</head>
+<body>
+  <div id="particles-js"></div>
+<header class="navbar">
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo-willpedia.png" alt="WILLPEDIA">
+    <span class="brand-text"></span>
+  </a>
+
+  <div class="nav-right">
+    <button class="nav-icon-btn" id="searchBtn" aria-label="Search">
+      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </button>
+
+    <div class="region-selector">
+      <img src="https://flagcdn.com/id.svg" alt="ID Flag" class="flag-icon">
+      <span>ID / IDR</span>
+    </div>
+
+    <button id="menuBtn" class="menu-btn-modern" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div id="jokiSearchOverlay" class="search-results-overlay">
+  <div class="search-container">
+    <input type="text" id="jokiSearch" placeholder="Cari joki game..." autocomplete="off">
+    
+    <div id="jokiSearchResults" class="search-results-list"></div>
+    
+    <button type="button" class="close-search-btn" onclick="closeJokiSearchOverlay()">Tutup</button>
+  </div>
+</div>
+
+<div id="overlay" class="overlay"></div>
+
+<aside id="drawer" class="drawer">
+  <div class="drawer-header">
+    <img src="assets/logo-willpedia.png" alt="WILLPEDIA" class="drawer-logo">
+    <button class="close-btn" id="closeDrawer">&times;</button>
+  </div>
+
+  <nav class="drawer-menu">
+    <a href="index.html"><span>Top Up Games</span></a>
+    <a href="joki.html" class="active"><span>Joki Games</span></a>
+    <a href="https://wa.me/6281357706121" target="_blank"><span>Hubungi CS</span></a>
+    <a href="testimoni.html" target="_blank"><span>Testimoni</span></a>
+  </nav>
+</aside>
+
+<div class="container">
+  <div class="slider">
+    <div class="slides-track">
+      <div class="slide"><img src="assets/linnea.png" alt="Promo 1"></div>
+      <div class="slide"><img src="assets/image (2).png" alt="Promo 2"></div>
+      <div class="slide"><img src="assets/wuwa.png" alt="Promo 3"></div>
+      <div class="slide"><img src="assets/zzz.png" alt="Promo 4"></div>
+    </div>
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+  
+  <div class="main-menu">
+    <a href="index.html" class="main-card">
+      <span class="menu-icon"></span>
+      <div class="menu-text"><strong>Top Up Games</strong></div>
+    </a>
+    <a href="joki.html" class="main-card active">
+      <span class="menu-icon"></span>
+      <div class="menu-text"><strong>Joki Games</strong></div>
+    </a>
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Pilih Game</h2>
+      <span class="hint">Pilih game untuk melihat layanan joki</span>
+    </div>
+    <div class="joki-grid" id="jokiGameGrid">
+      <button class="joki-card active" type="button" data-game="zenless_zone_zero_joki">
+        <div class="card-image"><img src="assets/cissia.png" alt="Zenles Zone Zero"></div>
+        <div class="card-info">
+          <span class="joki-title">Zenless Zone Zero</span>
+          <span class="joki-sub">Quest • Explore • Daily</span>
+        </div>
+      </button>
+
+      <button class="joki-card" type="button" data-game="genshin_impact_joki">
+        <div class="card-image"><img src="assets/genshin.png" alt="Genshin Impact"></div>
+        <div class="card-info">
+          <span class="joki-title">Genshin Impact</span>
+          <span class="joki-sub">Explore • Event • Quest</span>
+        </div>
+      </button>
+
+      <button class="joki-card" type="button" data-game="honkai_star_rail_joki">
+        <div class="card-image"><img src="assets/ashveil.png" alt="Honkai Star Rail"></div>
+        <div class="card-info">
+          <span class="joki-title">Honkai Star Rail</span>
+          <span class="joki-sub">Quest • Explore • Event</span>
+        </div>
+      </button>
+
+      <button class="joki-card" type="button" data-game="wuthering_waves_joki">
+        <div class="card-image"><img src="assets/Mornye.png" alt="Wuthering Waves"></div>
+        <div class="card-info">
+          <span class="joki-title">Wuthering Waves</span>
+          <span class="joki-sub">Event • Quest • Daily</span>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Pilih Paket</h2>
+      <span class="hint">Filter berdasarkan kategori</span>
+    </div>
+
+    <div class="chip-row" id="jokiCategory">
+      <button class="chip active" type="button">Semua</button>
+      <button class="chip" type="button">Daily</button>
+      <button class="chip" type="button">Quest</button>
+      <button class="chip" type="button">Explore</button>
+      <button class="chip" type="button">Material</button>
+      <button class="chip" type="button">Mancing</button>
+    </div>
+
+    <div id="itemList" class="item-list"></div>
+  </section>
+
+  <section class="note">
+    <div class="note-card">
+      <h4>Catatan Joki</h4>
+      <ul>
+        <li>Estimasi Waktu Joki Tergantung Antrian</li>
+        <li>Joki WAJIB Login Akun Hoyoverse / Kuro</li>
+        <li>Semua Proses Dilakukan Manual Tanpa Cheat</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<section class="pre-footer">
+  <div class="pre-footer-container">
+    <div class="footer-column">
+      <h3 class="footer-title">Dukungan</h3>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/6281357706121" target="_blank">WhatsApp</a></li>
+        <li><a href="willpedia.id@gmail.com">Email</a></li>
+        <li><a href="https://instagram.com/willpedia" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3 class="footer-title">Social Media</h3>
+      <ul class="footer-links">
+        <li><a href="https://www.tiktok.com/@willpedia.id" target="_blank">Tiktok WILLPEDIA</a></li>
+        <li><a href="https://www.youtube.com/@willpedia" target="_blank">Youtube WILLPEDIA</a></li>
+        <li><a href="https://www.instagram.com/willpedia.id/" target="_blank">Instagram WILLPEDIA</a></li>
+        <li><a href="https://discord.gg/HvHEJxjbY7" target="_blank">Discord WILLPEDIA</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>© WILLPEDIA 2026</footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="js/particles-config.js"></script>
+<script src="js/joki.js"></script>
+</body>
+</html>
