@@ -116,13 +116,8 @@
     {"name": "Pure Fiction", "category": "endgame", "price": 43000, "desc": "End Game Content"},
     {"name": "Apocalyptic Shadow", "category": "endgame", "price": 53000, "desc": "End Game Content"},
     {"name": "Memory of Chaos", "category": "endgame", "price": 63000, "desc": "End Game Content"},
-    {"name": "Anomaly Arbitration", "category": "endgame", "price": 143000, "desc": "End Game Content"},
     {"name": "Divergent Universe", "category": "endgame", "price": 188000, "desc": "End Game Content"},
     {"name": "Simulated Universe: The Herta First Clear", "category": "endgame", "price": 103000, "desc": "Simulated Universe"},
-    {"name": "Simulated Universe: Unknowable Domain", "category": "endgame", "price": 113000, "desc": "Simulated Universe"},
-    {"name": "Simulated Universe: The Herta", "category": "endgame", "price": 133000, "desc": "Simulated Universe"},
-    {"name": "Simulated Universe: Swarm Disaster", "category": "endgame", "price": 143000, "desc": "Simulated Universe"},
-    {"name": "Simulated Universe: Gold n Gears", "category": "endgame", "price": 153000, "desc": "Simulated Universe"},
     {"name": "Clear per difficulty", "category": "endgame", "price": 6000, "desc": "Simulated Universe"}
   ] 
 }
