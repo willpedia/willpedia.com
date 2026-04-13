@@ -1,0 +1,16 @@
+{
+  "game": "Wuthering Waves",
+  "image": "Mornye.png",
+  "items": [
+    {"name": "60 Lunites", "category": "basic", "price": 12000},
+    {"name": "Lunite Subscription", "category": "pass", "price": 70000},
+    {"name": "Insider Channel", "category": "pass", "price": 140000},
+    {"name": "Connoisseur Channel", "category": "pass", "price": 278000},
+    {"name": "Weekly Subscription", "category": "pass", "price": 139000},
+    {"name": "300 + 30 Lunites", "category": "basic", "price": 70000},
+    {"name": "980 Lunites", "category": "premium", "price": 208000},
+    {"name": "1980 + 260 Lunites", "category": "premium", "price": 417000},
+    {"name": "3280 + 600 Lunites", "category": "premium", "price": 695000},
+    {"name": "6480 + 1600 Lunites", "category": "whale", "price": 1371000}
+  ]
+}
