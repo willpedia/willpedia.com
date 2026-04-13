@@ -64,44 +64,66 @@ let currentGameId = null;
 let allTopupItems = [];
 let currentFilter = 'Semua';
 
-// --- Search System ---
-function openSearch() { searchOverlay?.classList.add('active'); searchInput?.focus(); }
-function closeSearchOverlay() { searchOverlay?.classList.remove('active'); if(searchInput) searchInput.value = ''; }
+function openSearch() {
+  // Langsung munculkan tanpa menutupi layar sepenuhnya
+  searchOverlay?.classList.add('active');
+  searchInput?.focus();
+}
 
+function closeSearchOverlay() {
+  searchOverlay?.classList.remove('active');
+  if(searchInput) searchInput.value = '';
+}
 searchBtn?.addEventListener('click', openSearch);
 
 async function globalSearch(query) {
   const q = query.trim().toLowerCase();
-  if (q.length < 2) return;
   
-  // List file JSON Top Up (Bukan Joki)
+  // Jika kurang dari 2 karakter, bersihkan hasil dan keluar
+  if (q.length < 2) {
+    searchResults.innerHTML = '';
+    return;
+  }
+  
   const topupFiles = ["zenless_zone_zero.json", "genshin_impact.json", "honkai_star_rail.json", "wuthering_waves.json"];
+  searchResults.innerHTML = `<div style="padding:20px; color:#f2f200; text-align:center;">Mencari Produk...</div>`;
   
-  searchResults.innerHTML = `<div style="padding:20px; color:#f2f200;">Mencari Produk...</div>`;
-  
-  const results = (await Promise.all(topupFiles.map(async f => {
-    try {
-      const res = await fetch(`data/${f}`);
-      const data = await res.json();
-      return (data.items || []).filter(i => i.name.toLowerCase().includes(q))
-             .map(i => ({ ...i, gameName: data.game }));
-    } catch { return []; }
-  }))).flat();
+  try {
+    const results = (await Promise.all(topupFiles.map(async f => {
+      try {
+        const res = await fetch(`data/${f}`);
+        const data = await res.json();
+        const gameName = data.game.toLowerCase();
+        
+        // Cek apakah item mengandung kata kunci ATAU nama game-nya yang mengandung kata kunci
+        return (data.items || []).filter(item => {
+          const itemName = item.name.toLowerCase();
+          return itemName.includes(q) || gameName.includes(q);
+        }).map(i => ({ ...i, gameName: data.game, gameImage: data.image }));
+      } catch { return []; }
+    }))).flat();
 
-  searchResults.innerHTML = results.length ? '' : '<div style="padding:20px; color:#a1a1a1;">Produk tidak ditemukan.</div>';
-  results.forEach(item => {
-    const div = document.createElement("div");
-    div.className = "search-item";
-    div.innerHTML = `
-      <div class="item-info">
-        <span class="game-tag">${item.gameName}</span>
-        <span class="item-name">${item.name}</span>
-      </div>
-      <span class="item-price">Rp ${Number(item.price).toLocaleString()}</span>
-    `;
-    div.onclick = () => window.open(`https://wa.me/6281357706121?text=Halo WILLPEDIA, saya mau topup *${item.name}* (${item.gameName})`, "_blank");
-    searchResults.appendChild(div);
-  });
+    searchResults.innerHTML = results.length ? '' : '<div style="padding:20px; color:#a1a1a1; text-align:center;">Produk tidak ditemukan.</div>';
+    
+    results.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "search-item";
+      div.innerHTML = `
+        <img src="assets/${item.gameImage || 'willpediaa.png'}" alt="${item.gameName}">
+        <div class="item-info">
+          <span class="game-tag">${item.gameName}</span>
+          <span class="item-name">${item.name}</span>
+        </div>
+        <span class="item-price">Rp ${Number(item.price).toLocaleString()}</span>
+      `;
+      div.onclick = () => {
+        window.open(`https://wa.me/6281357706121?text=Halo WILLPEDIA, saya mau topup *${item.name}* (${item.gameName})`, "_blank");
+      };
+      searchResults.appendChild(div);
+    });
+  } catch (err) {
+    searchResults.innerHTML = '<div style="padding:20px; color:red; text-align:center;">Terjadi kesalahan memuat data.</div>';
+  }
 }
 
 // --- Data Loading ---

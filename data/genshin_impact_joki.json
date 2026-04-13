@@ -1,5 +1,6 @@
 {
   "game": "Genshin Impact",
+  "image": "Genshin_Impact.png",
   "items": [
     {"name": "Daily 1 Hari", "category": "daily", "price": 3000, "desc": "Spend Resin, Daily Commision, Claim Battle Pass"},
     {"name": "Daily 7 Hari", "category": "daily", "price": 18000, "desc": "Spend Resin, Daily Commision, Claim Battle Pass"},
@@ -21,6 +22,7 @@
     {"name": "Explore The Chasm + Underground Chasm", "category": "explore", "price": 165000, "desc": "100% Exploration"},
     {"name": "Explore Chenyu Vale", "category": "explore", "price": 150000, "desc": "100% Exploration"},
     {"name": "Explore Inazuma", "category": "explore", "price": 400000, "desc": "100% Exploration"},
+    {"name": "Explore Enkanomiya", "category": "explore", "price": 100000, "desc": "100% Exploration"},
     {"name": "Explore Sumeru Forest", "category": "explore", "price": 400000, "desc": "100% Exploration"},
     {"name": "Explore Sumeru Desert", "category": "explore", "price": 700000, "desc": "100% Exploration"},
     {"name": "Explore Fontaine", "category": "explore", "price": 570000, "desc": "100% Exploration"},

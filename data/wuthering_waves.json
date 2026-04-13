@@ -1,5 +1,6 @@
 {
   "game": "Wuthering Waves",
+  "image": "Mornye.png",
   "items": [
     {"name": "60 Lunites", "category": "basic", "price": 12000},
     {"name": "Lunite Subscription", "category": "pass", "price": 70000},

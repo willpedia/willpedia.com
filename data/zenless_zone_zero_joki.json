@@ -1,5 +1,6 @@
 {
   "game": "Zenless Zone Zero",
+  "image": "zenless_zone_zero.png",
   "items": [
     {"name": " Daily 1 Hari", "category": "daily", "price": 4000, "desc": "Spend Battery, Daily Errands, Eridu City Fund, Claim Weekly Stamp"},
     {"name": " Rawat Akun 1 Bulan (LITE)", "category": "daily", "price": 65000, "desc": "Spend Battery, Daily Errands, Eridu City Fund, Claim Weekly Stamp"},

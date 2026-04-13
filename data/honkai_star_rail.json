@@ -1,5 +1,6 @@
 {
   "game": "Honkai Star Rail",
+  "image": "ashveil.png",
   "items": [
     {"name": "60 Oneiric Shard", "category": "basic", "price": 14000, "desc": "Paket kecil stellar jade"},
     {"name": "300 + 30 Oneiric Shard", "category": "basic", "price": 64000, "desc": "Bonus 10% shards"},

@@ -1,5 +1,6 @@
 {
   "game": "Zenless Zone Zero",
+  "image": "zenless_zone_zero.png",
   "items": [
     {"name": "60 Monochromes", "category": "basic", "price": 12000, "desc": "Paket kecil"},
     {"name": "300 + 30 Monochromes", "category": "basic", "price": 55000, "desc": "Bonus 10%"},

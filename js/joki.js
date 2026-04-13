@@ -75,26 +75,49 @@ searchBtn?.addEventListener('click', openJokiSearchOverlay);
 
 async function jokiGlobalSearch(query) {
   const q = query.trim().toLowerCase();
-  if (q.length < 2) return;
-  jokiSearchResults.innerHTML = `<div style="padding:20px; color:#f2f200;">Mencari...</div>`;
   
-  const results = (await Promise.all(jokiDataFiles.map(async f => {
-    try {
-      const res = await fetch(`data/${f}`);
-      const data = await res.json();
-      return (data.items || []).filter(i => i.name.toLowerCase().includes(q) || data.game.toLowerCase().includes(q))
-             .map(i => ({ ...i, gameSource: data.game }));
-    } catch { return []; }
-  }))).flat();
+  if (q.length < 2) {
+    jokiSearchResults.innerHTML = '';
+    return;
+  }
 
-  jokiSearchResults.innerHTML = results.length ? '' : '<div style="padding:20px; color:#a1a1a1;">Layanan tidak ditemukan.</div>';
-  results.forEach(pkg => {
-    const div = document.createElement("div");
-    div.className = "search-item";
-    div.innerHTML = `<div class="item-info"><span class="game-tag">${pkg.gameSource}</span><span class="item-name">${pkg.name}</span></div><span class="item-price">Rp ${Number(pkg.price).toLocaleString()}</span>`;
-    div.onclick = () => window.open(`https://wa.me/${WA_NUMBER}?text=Halo WILLPEDIA, saya mau order joki *${pkg.name}* (${pkg.gameSource})`, "_blank");
-    jokiSearchResults.appendChild(div);
-  });
+  jokiSearchResults.innerHTML = `<div style="padding:20px; color:#f2f200; text-align:center;">Mencari...</div>`;
+  
+  try {
+    const results = (await Promise.all(jokiDataFiles.map(async f => {
+      try {
+        const res = await fetch(`data/${f}`);
+        const data = await res.json();
+        const gameName = data.game.toLowerCase();
+        
+        return (data.items || []).filter(item => {
+          const itemName = item.name.toLowerCase();
+          return itemName.includes(q) || gameName.includes(q);
+        }).map(i => ({ ...i, gameSource: data.game, gameImage: data.image }));
+      } catch { return []; }
+    }))).flat();
+
+    jokiSearchResults.innerHTML = results.length ? '' : '<div style="padding:20px; color:#a1a1a1; text-align:center;">Layanan tidak ditemukan.</div>';
+    
+    results.forEach(pkg => {
+      const div = document.createElement("div");
+      div.className = "search-item";
+      div.innerHTML = `
+        <img src="assets/${pkg.gameImage || 'willpediaa.png'}" alt="${pkg.gameSource}">
+        <div class="item-info">
+          <span class="game-tag">${pkg.gameSource}</span>
+          <span class="item-name">${pkg.name}</span>
+        </div>
+        <span class="item-price">Rp ${Number(pkg.price).toLocaleString()}</span>
+      `;
+      div.onclick = () => {
+        window.open(`https://wa.me/${WA_NUMBER}?text=Halo WILLPEDIA, saya mau order joki *${pkg.name}* (${pkg.gameSource})`, "_blank");
+      };
+      jokiSearchResults.appendChild(div);
+    });
+  } catch (err) {
+    jokiSearchResults.innerHTML = '<div style="padding:20px; color:red; text-align:center;">Gagal memuat data.</div>';
+  }
 }
 
 // Data Handling

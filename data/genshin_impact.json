@@ -1,5 +1,6 @@
 {
   "game": "Genshin Impact",
+  "image": "Genshin_Impact.png",
   "items": [
     {"name": "60 Genesis Crystals", "category": "basic", "price": 14000, "desc": "Paket kecil primogems"},
     {"name": "300 + 30 Genesis Crystal", "category": "basic", "price": 64000, "desc": "Bonus 10% crystals"},

@@ -1,5 +1,6 @@
 {
   "game": "Wuthering Waves",
+  "image": "Mornye.png",
   "items": [
     {"name": "Daily 1 Hari", "category": "daily", "price": 4000, "desc": "Daily Task, Broadcast, Spend Waveplate"},
     {"name": "Daily 7 Hari", "category": "daily", "price": 20000, "desc": "Daily Task, Broadcast, Spend Waveplate, Fantasies"},

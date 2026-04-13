@@ -18,7 +18,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 10px 20px;
   background-color: var(--bg-dark);
   border-bottom: 1px solid var(--border-color);
   position: sticky;
@@ -96,104 +96,113 @@ body {
   object-fit: cover;
 }
 
-/* CONTAINER UTAMA SEARCH OVERLAY */
+/* =========================================
+   SEARCH DROPDOWN SYSTEM (FIXED)
+   ========================================= */
+
 .search-results-overlay {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.95); /* Latar gelap pekat */
-  z-index: 2000;
-  padding: 40px 20px;
+  top: 75px; /* Tepat di bawah navbar */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 600px;
+  max-height: 80vh;
+  background: rgba(20, 20, 20, 0.96); /* Gelap transparan */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
   overflow-y: auto;
-  backdrop-filter: blur(5px); /* Efek blur di belakang overlay */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 .search-results-overlay.active {
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
+  display: block !important;
+  animation: dropdownFade 0.3s ease-out;
 }
 
-/* KOTAK PENCARIAN (INPUT) */
-.search-results-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.98); /* Hitam pekat sesuai referensi */
-  z-index: 2000;
-  padding: 15px; /* Padding kecil agar tidak memakan ruang di mobile */
-  overflow-y: auto;
-  box-sizing: border-box;
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translate(-50%, -15px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
 }
 
 #topupSearch {
   width: 100%;
-  box-sizing: border-box; /* WAJIB: Agar padding tidak merusak lebar */
+  box-sizing: border-box;
   padding: 12px 18px;
   background: #111;
-  border: 2px solid #f2f200; /* Border kuning sesuai gambar */
-  border-radius: 10px;
+  border: 2px solid #f2f200;
+  border-radius: 12px;
   color: white;
-  font-size: 16px; /* Ukuran pas agar tidak auto-zoom di iPhone */
+  font-size: 16px;
   outline: none;
+  margin-bottom: 15px;
 }
 
 #topupSearch:focus {
-  border-color: #f2f200; /* Warna kuning saat diketik */
+  border-color: #f2f200;
   box-shadow: 0 0 15px rgba(242, 242, 0, 0.2);
 }
 
 /* LIST HASIL PENCARIAN */
 .search-results-list {
   width: 100%;
-  margin-top: 5px;
   background: transparent;
 }
 
 .search-item {
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 12px;
-  padding: 15px;
-  margin-bottom: 12px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  padding: 12px;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   cursor: pointer;
   transition: 0.2s;
+  justify-content: flex-start;
 }
 
 .search-item:hover {
-  background: #222;
-  border-color: #f2f200;
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(5px);
 }
 
-.item-info .game-tag {
-  color: #f2f200;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 4px;
+.search-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
 }
 
 .item-info .item-name {
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 15px;
 }
 
+.item-info .game-tag {
+  color: #a1a1a1;
+  font-size: 11px;
+  text-transform: none;
+  margin-bottom: 2px;
+}
+
 .search-item .item-price {
+  margin-left: auto; /* Dorong harga ke kanan */
   color: #f2f200;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 /* TOMBOL TUTUP */
@@ -205,8 +214,11 @@ body {
   border-radius: 10px;
   font-weight: 700;
   cursor: pointer;
-  margin-top: 20px;
-  align-self: center;
+  margin-top: 15px;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   transition: 0.2s;
 }
 
@@ -215,109 +227,12 @@ body {
   background: #fff;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.game-tag {
-  display: block;
-  font-size: 10px;
-  color: #f2f200;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-/* Pastikan tombol search berada di lapisan paling depan dan bisa diklik */
+/* Pastikan tombol search di navbar bisa diklik */
 #searchBtn {
   position: relative;
   z-index: 1001 !important;
   cursor: pointer !important;
   pointer-events: auto !important;
-}
-
-/* ITEM HASIL SEARCH (Responsive) */
-.search-item-modern {
-  display: flex;
-  align-items: center;
-  padding: 12px 5px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  width: 100%;
-}
-
-.search-item-modern:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.search-item-left {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.search-item-image {
-  width: 48px; /* Ukuran ikon lebih ringkas untuk mobile */
-  height: 48px;
-  flex-shrink: 0;
-  margin-right: 12px;
-}
-
-.search-item-image img {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-/* Efek lengkungan kuning di bawah gambar seperti di screenshot */
-.search-item-image::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background: linear-gradient(to top, rgba(242, 242, 0, 0.4), transparent);
-  border-radius: 0 0 18px 18px;
-  pointer-events: none;
-}
-
-/* Tipografi Teks */
-.search-item-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.search-game-name {
-  font-size: 16px;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-/* Highlight kata "Genshin" jika ada (opsional) */
-.search-game-name::first-word {
-  color: #f2f200;
-}
-
-.search-game-dev {
-  font-size: 11px;
-  color: #4da6ff;
-  font-weight: 600;
-}
-
-/* Perbaikan Input Search agar melengkung seperti gambar */
-#topupSearch {
-  border-radius: 12px;
-  background: #121212;
-  border: 2px solid #f2f200; /* Border kuning tegas */
-  padding: 12px 18px;
-}
-
-/* Pastikan container search container terlihat */
-.search-container {
-  position: relative;
-  z-index: 1501;
-  padding: 20px;
 }
 
 /* Menu Hamburger Modern */
@@ -346,38 +261,33 @@ body {
 /* RESPONSIVE */
 @media (max-width: 480px) {
   .region-selector span {
-    display: none; /* Sembunyikan teks di HP kecil, sisakan bendera */
+    display: none;
   }
   .region-selector {
     padding: 6px 10px;
   }
 }
 
-
-
-
-
-
-/* CONTAINER UTAMA */
+/* CONTAINER UTAMA SLIDER */
 .slider {
   width: 100%;
   max-width: 1200px;
   margin: 20px auto;
-  overflow: hidden; /* WAJIB: Memotong sisa gambar agar tidak ngintip */
+  overflow: hidden;
   position: relative;
   border-radius: 40px;
-  z-index: 1; /* Pastikan di atas partikel */
+  z-index: 1;
 }
 
 .slides-track {
   display: flex;
-  width: 400%; /* UBAH KE 400% karena hanya ada 4 gambar */
+  width: 400%;
   transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
 .slide {
-  width: 25%; /* UBAH KE 25% (100 / 4 gambar) */
+  width: 25%;
   flex-shrink: 0;
 }
 
@@ -388,12 +298,10 @@ body {
   display: block;
 }
 
-/* Sembunyikan tombol navigasi jika masih ada di CSS lama */
 .prev-btn, .next-btn {
   display: none;
 }
 
-/* DOTS INDIKATOR (Tetap dipertahankan agar user tahu ada slide lain) */
 .slider-dots {
   position: absolute;
   bottom: 15px;
@@ -417,31 +325,25 @@ body {
   border-radius: 10px;
 }
 
-
-
-
-
-/* DRAWER BASE - PINDAH KE KIRI */
+/* DRAWER SYSTEM */
 .drawer {
   position: fixed;
   top: 0;
-  left: -300px; /* Sembunyi di luar layar sebelah kiri */
+  left: -300px;
   width: 280px;
   height: 100%;
-  background-color: #3b3a4a; /* Warna ungu gelap sesuai gambar referensi */
+  background-color: #3b3a4a;
   z-index: 2000;
-  transition: left 0.3s ease; /* Animasi geser dari kiri */
+  transition: left 0.3s ease;
   display: flex;
   flex-direction: column;
   box-shadow: 5px 0 15px rgba(0,0,0,0.5);
 }
 
-/* KETIKA AKTIF - GESER KE POSISI 0 */
 .drawer.active {
-  left: 0; /* Muncul dari kiri ke kanan */
+  left: 0;
 }
 
-/* HEADER DALAM DRAWER */
 .drawer-header {
   padding: 20px;
   display: flex;
@@ -450,7 +352,6 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Menyesuaikan Logo dan Tombol Close di Header */
 .drawer-logo {
   height: 32px;
 }
@@ -464,7 +365,6 @@ body {
   line-height: 1;
 }
 
-/* MENU LIST */
 .drawer-menu {
   display: flex;
   flex-direction: column;
@@ -488,23 +388,19 @@ body {
   background: rgba(255,255,255,0.05);
 }
 
-/* Ikon di sisi kanan sesuai gambar referensi */
 .drawer-menu a i {
   font-size: 18px;
   opacity: 0.7;
 }
 
-
-
-/* Container Grid */
+/* JOKI GRID */
 .joki-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 kolom di HP agar pas */
+  grid-template-columns: repeat(2, 1fr);
   gap: 15px;
   padding: 10px 0;
 }
 
-/* Card Style */
 .joki-card {
   background: #1a1a1a;
   border: none;
@@ -517,7 +413,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Gambar Bagian Atas */
 .card-image {
   height: 110px;
   overflow: hidden;
@@ -528,15 +423,14 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%); /* Efek Hitam Putih */
+  filter: grayscale(100%);
   opacity: 0.8;
   transition: 0.3s ease;
-  object-position: 50% 20%; /* Fokus ke tengah gambar */
+  object-position: 50% 20%;
 }
 
-/* Info Bagian Bawah (Kuning) */
 .card-info {
-  background-color: #f2f200; /* Kuning Terang */
+  background-color: #f2f200;
   padding: 12px;
   text-align: left;
   min-height: 55px;
@@ -559,35 +453,29 @@ body {
   margin-top: 2px;
 }
 
-/* State Saat Dipilih (Active) */
 .joki-card.active {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(242, 242, 0, 0.3);
 }
 
 .joki-card.active .card-image img {
-  filter: grayscale(0%); /* Gambar jadi berwarna kembali */
+  filter: grayscale(0%);
   opacity: 1;
 }
 
-/* Tambahan: Responsif Tablet/Desktop */
 @media (min-width: 768px) {
   .joki-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-
-
-
-/* CONTAINER MENU UTAMA */
+/* MAIN MENU */
 .main-menu {
   display: flex;
   gap: 12px;
   margin: 20px 0;
 }
 
-/* KARTU MENU (TOP UP / JOKI) */
 .main-card {
   flex: 1;
   display: flex;
@@ -595,15 +483,11 @@ body {
   justify-content: center;
   gap: 10px;
   padding: 14px;
-  background-color: #1a1a1a; /* Gelap sesuai navbar */
+  background-color: #1a1a1a;
   border: 1px solid #262626;
   border-radius: 12px;
   text-decoration: none;
   transition: all 0.3s ease;
-}
-
-.main-card .menu-icon {
-  font-size: 20px;
 }
 
 .main-card .menu-text strong {
@@ -612,26 +496,23 @@ body {
   font-weight: 600;
 }
 
-/* STATE AKTIF (Menu yang sedang dibuka) */
 .main-card.active {
-  background-color: #f2f200; /* Kuning terang */
+  background-color: #f2f200;
   border-color: #f2f200;
 }
 
 .main-card.active .menu-text strong {
-  color: #000000; /* Teks jadi hitam di background kuning */
+  color: #000000;
 }
 
 .main-card:hover:not(.active) {
   background-color: #252525;
 }
 
-
-
-/* HEADER SEKSI */
+/* SECTION HEAD */
 .section-head {
   margin-bottom: 15px;
-  border-left: 4px solid #f2f200; /* Aksen kuning di samping judul */
+  border-left: 4px solid #f2f200;
   padding-left: 12px;
 }
 
@@ -651,7 +532,7 @@ body {
   margin-top: 2px;
 }
 
-/* FILTER CHIPS */
+/* CHIPS */
 .chip-row {
   display: flex;
   gap: 10px;
@@ -674,15 +555,15 @@ body {
 }
 
 .chip.active {
-  background: #f2f200; /* Kuning sesuai tema */
+  background: #f2f200;
   color: #000;
   border-color: #f2f200;
 }
 
-/* ITEM LIST (Daftar Produk) */
+/* ITEM LIST */
 .item-list {
   display: grid;
-  grid-template-columns: 1fr; /* Satu kolom di HP agar informatif */
+  grid-template-columns: 1fr;
   gap: 12px;
 }
 
@@ -725,7 +606,7 @@ body {
 
 .item-price {
   display: block;
-  color: #f2f200; /* Harga warna kuning agar menonjol */
+  color: #f2f200;
   font-weight: 800;
   font-size: 16px;
   margin-bottom: 5px;
@@ -742,7 +623,7 @@ body {
   text-transform: uppercase;
 }
 
-/* SEKSI CATATAN */
+/* NOTES */
 .note {
   margin-top: 30px;
   margin-bottom: 20px;
@@ -750,7 +631,7 @@ body {
 
 .note-card {
   background: #111;
-  border: 1px dashed #333; /* Border putus-putus agar estetik */
+  border: 1px dashed #333;
   border-radius: 12px;
   padding: 20px;
 }
@@ -765,10 +646,6 @@ body {
   gap: 8px;
 }
 
-.note-card h4::before {
-  font-size: 14px;
-}
-
 .note-card ul {
   margin: 0;
   padding-left: 20px;
@@ -778,9 +655,10 @@ body {
 }
 
 .note-card li::marker {
-  color: #f2f200; /* Titik list warna kuning */
+  color: #f2f200;
 }
 
+/* PARTICLES */
 #particles-js {
   position: fixed;
   top: 0;
@@ -789,14 +667,12 @@ body {
   height: 100%;
   background-color: #0a0a0a;
   z-index: -1;
-  pointer-events: none; /* WAJIB: Agar partikel tidak menghalangi klik slider/tombol */
+  pointer-events: none;
 }
 
-/* =========================================
-   PRE-FOOTER STYLE
-   ========================================= */
+/* FOOTER */
 .pre-footer {
-  background-color: var(--bg-dark); /* Tetap gelap sesuai tema */
+  background-color: var(--bg-dark);
   padding: 60px 20px;
   border-top: 1px solid var(--border-color);
   margin-top: 40px;
@@ -806,7 +682,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 Kolom di HP */
+  grid-template-columns: repeat(2, 1fr);
   gap: 40px;
 }
 
@@ -841,17 +717,15 @@ body {
 .footer-links a:hover {
   color: var(--accent-yellow);
   opacity: 1;
-  padding-left: 5px; /* Efek geser dikit pas di-hover */
+  padding-left: 5px;
 }
 
-/* Responsif untuk Layar Besar */
 @media (min-width: 768px) {
   .pre-footer-container {
-    grid-template-columns: repeat(4, 1fr); /* Jadi 4 kolom kalau di laptop */
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* FOOTER */
 footer {
   text-align: center;
   padding: 30px 20px;
